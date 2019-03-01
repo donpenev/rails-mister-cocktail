@@ -1,0 +1,24 @@
+<h2>The cocktail:</h2>
+<%= @cocktail.name %>
+<!-- name -->
+<div>
+  <h3>Made of:</h3>
+</div>
+<% @doses.each do |dose|%>
+<%= dose.description %>
+<h4>of</h3>
+<%= (@ingredients.find(dose.ingredient_id)).name %>
+<!-- lemon -->
+<%= link_to 'Destroy this dose', dose_path(dose.id),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+<h3>---</h3>
+<% end %>
+<div>
+  <%= link_to 'Add a recipe', new_cocktail_dose_path(@cocktail) %>
+</div>
+<div>
+</div>
+<div>
+  <%= link_to 'See the list', cocktails_path %>
+</div>
